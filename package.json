@@ -1,0 +1,14 @@
+{
+  "name": "mumbaihack_aaj",
+  "version": "1.0.0",
+  "description": "<h1><b>Mumbai Hack 2023 project</b></h1>\r <p><b>Student Track</b></p>\r <p>Topic Selected:</p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-router-dom": "^6.11.2"
+  }
+}
