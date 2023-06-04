@@ -39,33 +39,37 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, origins=['*'])
 
+
 @app.route("/")
 def index():
     return "Welcome!"
+
 
 @app.route("/hello_api")
 def exec():
     input_text = 'provide me shoes'
     print(input_text)
-    
+
     return input_text
+
 
 @app.route('/api/complete', methods=['POST'])
 def complete_text():
-    input_text = request.json['input']
-    
+    input_text = request.json['question']
+
     # Perform the API call and get the output
     # Replace 'YOUR_API_KEY' with your actual API key
-    response = requests.post('https://free.churchless.tech/v1/chat/completions',
-                headers={
-                    'Content-Type': 'application/json',
-                    'x-api-key': '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'
-                },
-                json={'input': input_text})
-    
+    response = requests.post('https://simple-chatgpt-api.p.rapidapi.com/ask',
+                             headers={
+                                 "content-type": "application/json",
+                                 "X-RapidAPI-Key": "2461d6eeb6msh9d53e72b8c7daa1p1882f4jsn285161bf9240",
+                                 "X-RapidAPI-Host": "simple-chatgpt-api.p.rapidapi.com"
+                             },
+                             json={'question': input_text})
+
     if response.status_code == 200:
         data = response.json()
-        return jsonify({ 'input': input_text, 'output': data})
+        return jsonify({'question': input_text, 'output': data})
     else:
         return jsonify({'error': 'Request failed with status: {}'.format(response.status_code)})
 
